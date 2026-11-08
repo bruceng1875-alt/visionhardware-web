@@ -2,3 +2,8 @@ name = "visionhardware-web"
 main = "src/index.js"
 compatibility_date = "2026-11-01"
 workers_dev = true
+
+# Production site - Cloudflare creates DNS and TLS automatically.
+[[routes]]
+pattern = "visionhardware.net"
+custom_domain = true
