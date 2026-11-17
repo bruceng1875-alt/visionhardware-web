@@ -11,3 +11,9 @@ Source: user-provided 平台整理.xlsx. Existing Vision Hardware layout, brand 
 - All categories and reference routes checked; 25 tests pass. Mobile product layout visually checked. Assets use explicit dimensions and lazy loading.
 
 Staging only: production release, verified production email sender, production privacy/retention setup and search indexing remain separate release work. No fabricated prices, certifications, manufacturing specifications or contact accounts added.
+
+## Catalog browsing improvement — 2026-11-17
+
+Moved individual products above collection overview photos. All eight featured collections now present seven clickable model cards, with manually transcribed dimensions and weights from the supplied images (56 records in src/content/specifications.js). Source dimension units were not printed; no units were invented. FY2380 weight annotation is 1.5 without a unit and is labeled accordingly. Front/base weights are preserved separately.
+
+Product details include an accessible native image dialog, adjacent-model navigation, related models and product-specific email inquiry context. Collection cards now preview three models and show a product count. Existing 56 URLs retained. 27 tests pass; actual list-to-detail-to-enlargement flow checked in browser.

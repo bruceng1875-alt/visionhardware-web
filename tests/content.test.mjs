@@ -24,3 +24,17 @@ test('category expansion preserves inquiries and notification relationships',()=
  for(const c of supplied.categories)db.prepare('UPDATE inquiries SET product_interest=? WHERE id=?').run(c.slug,'old');
  db.close();
 });
+import {specifications} from '../src/content/specifications.js';
+test('all 56 models expose dimensions, weight, individual links and enlargement',async()=>{
+ assert.equal(Object.keys(specifications).length,56);
+ for(const c of supplied.categories.filter(c=>c.references.length)){
+  const html=await (await worker.fetch(new Request('https://visionhardware.net/products/'+c.slug+'/'),{})).text();
+  assert.equal((html.match(/class="product-card"/g)||[]).length,7,c.slug);
+  for(const p of c.references){assert.ok(html.includes('/products/'+c.slug+'/'+p.cell.toLowerCase()+'/'));assert.equal(specifications[p.cell].length>=2,true);const detail=await (await worker.fetch(new Request('https://visionhardware.net/products/'+c.slug+'/'+p.cell.toLowerCase()+'/'),{})).text();assert.ok(detail.includes(specifications[p.cell][0]));assert.ok(detail.includes(specifications[p.cell][1]));assert.ok(detail.includes('id="image-dialog"'));}
+ }
+});
+test('production quotation email preserves a valid selected model',async()=>{
+ const html=await (await worker.fetch(new Request('https://visionhardware.net/request-quote/?category=metal-leather-labels&reference=FY3190'),{})).text();
+ assert.ok(html.includes('Selected model: FY3190'));assert.ok(html.includes(encodeURIComponent('Product reference: FY3190')));
+ const invalid=await (await worker.fetch(new Request('https://visionhardware.net/request-quote/?category=metal-leather-labels&reference=%3Cscript%3E'),{})).text();assert.ok(!invalid.includes('Selected model:'));
+});
