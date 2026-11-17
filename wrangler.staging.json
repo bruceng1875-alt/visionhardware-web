@@ -1,0 +1,49 @@
+{
+  "name": "visionhardware-web-staging",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "visionhardware-rfq-staging",
+      "database_id": "1b05d521-914b-4920-85a4-20bd48b44a9e",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "staging",
+    "INQUIRIES_ENABLED": "true",
+    "PRIVACY_APPROVED": "false",
+    "ALLOWED_ORIGINS": "https://visionhardware-web-staging.bruceng1875.workers.dev",
+    "TURNSTILE_MODE": "live",
+    "TURNSTILE_HOSTNAME": "visionhardware-web-staging.bruceng1875.workers.dev",
+    "MAIL_PROVIDER": "resend",
+    "ALLOW_EMAIL_SEND": "true",
+    "RFQ_PREVIEW": "true",
+    "STAGING_TESTS_ENABLED": "true",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAGFKL0XouIm_WHab"
+  },
+  "ratelimits": [
+    {
+      "name": "RATE_LIMITER",
+      "simple": {
+        "period": 60,
+        "limit": 5
+      },
+      "namespace_id": "2026111701"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  }
+}

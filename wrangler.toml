@@ -7,3 +7,14 @@ workers_dev = true
 [[routes]]
 pattern = "visionhardware.net"
 custom_domain = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+
+[vars]
+ENVIRONMENT = "production"
+INQUIRIES_ENABLED = "false"
+ALLOW_EMAIL_SEND = "false"
+PRIVACY_APPROVED = "false"
