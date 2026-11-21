@@ -1,8 +1,8 @@
 import {supplied} from './supplied.js';
 import {escape} from './views.js';
 // Add only confirmed company-owned profile URLs. No placeholder accounts.
-export const socialProfiles=[];
-const glyphs={email:'<path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/>',phone:'<path d="m7 3 3 5-2 2a14 14 0 0 0 6 6l2-2 5 3-1 4C10 22 2 14 3 4z"/>',whatsapp:'<path d="M20 11.5a8 8 0 0 1-12 7L3 20l1.5-5A8 8 0 1 1 20 11.5Z"/><path d="M8 7c0 4 2 6 6 7"/>'};
+export const socialProfiles=[{platform:'youtube',label:'YouTube',url:'https://www.youtube.com/@VisionHardware-1'}];
+const glyphs={youtube:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z"/>',email:'<path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/>',phone:'<path d="m7 3 3 5-2 2a14 14 0 0 0 6 6l2-2 5 3-1 4C10 22 2 14 3 4z"/>',whatsapp:'<path d="M20 11.5a8 8 0 0 1-12 7L3 20l1.5-5A8 8 0 1 1 20 11.5Z"/><path d="M8 7c0 4 2 6 6 7"/>'};
 const icon=name=>`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphs[name]||'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18"/>'}</svg>`;
 const profileLinks=()=>socialProfiles.map(p=>`<a href="${escape(p.url)}" target="_blank" rel="noopener noreferrer">${icon(p.platform)}<span>${escape(p.label)}</span></a>`).join('');
 export const contactStrip=()=>`<div class="top contact-strip"><div class="wrap"><span class="strip-brand">VISION HARDWARE · SHISHI, CHINA</span><nav class="contact-shortcuts" aria-label="Contact and social media"><a href="${supplied.company.phoneHref}">${icon('phone')}<span>${supplied.company.phone}</span></a><a href="mailto:${supplied.company.email}">${icon('email')}<span>${supplied.company.email}</span></a><a href="https://wa.me/8613559419353" target="_blank" rel="noopener noreferrer">${icon('whatsapp')}<span>WhatsApp</span></a>${profileLinks()}</nav></div></div>`;
