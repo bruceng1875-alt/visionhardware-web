@@ -35,3 +35,10 @@ The site is still a client-review preview. Before public launch, replace illustr
 The supplied company/product content is now deployed to visionhardware.net: 22 product families, 56 reference pages, WebP images and company contact details. Production quotations currently use the company email link; the online form and automatic notifications remain isolated in staging until verified production sending and privacy processing are configured. Search indexing remains disabled pending SEO release review.
 
 Production Worker version: 617e64ec-8b08-4f6d-8979-f5ccf2ad6ea2. Validation: 25 Node tests passed. Static assets are configured in wrangler.toml for subsequent GitHub deployments.
+
+
+## Search readiness — 2026-11-21
+
+Production indexing is enabled only on https://visionhardware.net with SEARCH_INDEXING=true. Sitemap: /sitemap.xml (82 canonical pages); crawler rules: /robots.txt. Staging, workers.dev mirror, quote page, empty category and errors stay noindex. Page descriptions and canonicals are generated from real content. Google Search Console submission is deferred at user request; no claim of Google indexing is made.
+
+Header contact shortcuts use the supplied company email, phone and user-confirmed WhatsApp +86 13559419353. Other social profiles remain unconfigured until their real URLs are supplied.
